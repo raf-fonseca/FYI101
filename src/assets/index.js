@@ -10,9 +10,6 @@ import fyiLogo from "./fyiLogo.jpeg";
 import pathIcon from "./pathIcon.png";
 import healthIcon from "./healthIcon.png";
 import calendarIcon from "./calendarIcon.png";
-import send from "./send.svg";
-import shield from "./shield.svg";
-import star from "./star.svg";
 
 export {
   menu,
@@ -27,7 +24,4 @@ export {
   pathIcon,
   healthIcon,
   calendarIcon,
-  send,
-  shield,
-  star,
 };
