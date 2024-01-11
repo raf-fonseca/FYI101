@@ -3,9 +3,9 @@ import {
   instagram,
   linkedin,
   twitter,
-  send,
-  shield,
-  star,
+  pathIcon,
+  healthIcon,
+  calendarIcon,
 } from "../assets";
 
 export const navLinks = [
@@ -30,21 +30,21 @@ export const navLinks = [
 export const features = [
   {
     id: "feature-1",
-    icon: star,
+    icon: calendarIcon,
     title: "Rewards",
     content:
       "The best credit cards offer some tantalizing combinations of promotions and prizes",
   },
   {
     id: "feature-2",
-    icon: shield,
+    icon: pathIcon,
     title: "100% Secured",
     content:
       "We take proactive steps make sure your information and transactions are secure.",
   },
   {
     id: "feature-3",
-    icon: send,
+    icon: healthIcon,
     title: "Balance Transfer",
     content:
       "A balance transfer credit card can save you a lot of money in interest charges.",
