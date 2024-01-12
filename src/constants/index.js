@@ -4,7 +4,7 @@ import {
   linkedin,
   twitter,
   pathIcon,
-  healthIcon,
+  plusIcon,
   calendarIcon,
 } from "../assets";
 
@@ -31,23 +31,23 @@ export const features = [
   {
     id: "feature-1",
     icon: calendarIcon,
-    title: "Rewards",
+    title: "Events",
     content:
-      "The best credit cards offer some tantalizing combinations of promotions and prizes",
+      "All events happening at TMU will displayed, showing countless opportunities.",
   },
   {
     id: "feature-2",
     icon: pathIcon,
-    title: "100% Secured",
+    title: "Personalized Path",
     content:
-      "We take proactive steps make sure your information and transactions are secure.",
+      "Get a personalized path towards your goals by inputting your program and interests.",
   },
   {
     id: "feature-3",
-    icon: healthIcon,
-    title: "Balance Transfer",
+    icon: plusIcon,
+    title: "Health & Wellness",
     content:
-      "A balance transfer credit card can save you a lot of money in interest charges.",
+      "Receive custom recommendations on how to stay healthy as a student.",
   },
 ];
 

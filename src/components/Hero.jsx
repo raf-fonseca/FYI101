@@ -1,6 +1,5 @@
 import styles from "../style";
-import { robot } from "../assets";
-import GetStarted from "./GetStarted";
+import { robot, getStarted } from "../assets";
 
 const Hero = () => {
   return (
@@ -11,7 +10,7 @@ const Hero = () => {
       <div
         className={`flex-1 ${styles.flexStart} flex-col xl:px-0 sm:px-16 px-6`}
       >
-        {/* Main Title + Button*/}
+        {/* Main Title */}
         <div className="flex flex-row justify-between items-center w-full">
           <h1 className="flex-1 font-poppins font-semibold ss:text-[72px] text-[52px] text-white ss:leading-[100.8px] leading-[75px]">
             Your AI <br className="sm:block hidden" />{" "}
@@ -22,9 +21,6 @@ const Hero = () => {
               Assistant <br className="sm:block hidden" />{" "}
             </span>
           </h1>
-          <div className="ss:flex hidden md:mr-4 mr-0">
-            <GetStarted />
-          </div>
         </div>
 
         {/* Lower Title */}
@@ -36,13 +32,19 @@ const Hero = () => {
           personalized support.
         </p>
       </div>
-      {/* Robot and gradients  */}
+      {/* Right side */}
       <div
         className={`flex-1 flex ${styles.flexCenter} md:my-0 my-10 relative`}
       >
         <img
+          src={getStarted}
+          alt="Get started"
+          style={{ transform: "translate(-30%, -30%)" }}
+          className="w-[20%] h-[20%] z-[6] cursor-pointer absolute"
+        />
+        <img
           src={robot}
-          alt="robot"
+          alt="billing"
           className="w-[100%] h-[100%] relative z-[5]"
         />
 
@@ -51,9 +53,6 @@ const Hero = () => {
         <div className="absolute z-[1] w-[80%] h-[80%] rounded-full white__gradient bottom-40" />
         <div className="absolute z-[0] w-[50%] h-[50%] right-20 bottom-20 blue__gradient" />
         {/* gradient end */}
-      </div>
-      <div className={`ss:hidden ${styles.flexCenter}`}>
-        <GetStarted />
       </div>
     </section>
   );
