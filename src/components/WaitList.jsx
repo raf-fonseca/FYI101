@@ -31,7 +31,11 @@ function WaitList() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className={`${layout.flexCenter} mt-4`}>
+    <form
+      onSubmit={handleSubmit}
+      className={`${layout.flexCenter} mt-4`}
+      id="waitList"
+    >
       <input
         className="w-full   h-[50px] rounded-[20px] bg-discount-gradient text-white font-semibold px-4 py-2"
         type="text"
