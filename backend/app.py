@@ -58,50 +58,50 @@ def serve(path):
     else:
         return send_from_directory(app.static_folder, 'index.html')
     
-@app.route('/api/data/waitlist', methods=['POST'])
-def get_data():
-    print("Received a POST request")  # This will print when the server receives a POST request at '/api/data'
-    print(request.form)  # This will print the form data
-    # This will not raise a KeyError if field is not present
-    firstname = request.form.get('firstName')
-    lastname = request.form.get('lastName')
-    email = request.form.get('email')
-    if firstname and lastname and email:
-        print(f"Received message: {firstname} {lastname} {email}")
+# @app.route('/api/data/waitlist', methods=['POST'])
+# def get_data():
+#     print("Received a POST request")  # This will print when the server receives a POST request at '/api/data'
+#     print(request.form)  # This will print the form data
+#     # This will not raise a KeyError if field is not present
+#     firstname = request.form.get('firstName')
+#     lastname = request.form.get('lastName')
+#     email = request.form.get('email')
+#     if firstname and lastname and email:
+#         print(f"Received message: {firstname} {lastname} {email}")
 
-        # Get a connection from the pool
-        conn = db_pool.getconn()
+#         # Get a connection from the pool
+#         conn = db_pool.getconn()
 
-        try:
-            # Create a cursor
-            cur = conn.cursor()
+#         try:
+#             # Create a cursor
+#             cur = conn.cursor()
 
-            # Insert the message into the messages table
-            cur.execute(sql.SQL("INSERT INTO {} ({}, {}, {}, {}) VALUES (%s, %s, %s, %s)").format(
-                sql.Identifier(INFO_TABLE),
-                sql.Identifier(EMAIL_COLUMN),
-                sql.Identifier(FIRST_NAME_COLUMN),
-                sql.Identifier(LAST_NAME_COLUMN),
-                sql.Identifier(DATE_OF_BIRTH_COLUMN)
-            ), (email, firstname, lastname, "1/2/2023"))
+#             # Insert the message into the messages table
+#             cur.execute(sql.SQL("INSERT INTO {} ({}, {}, {}, {}) VALUES (%s, %s, %s, %s)").format(
+#                 sql.Identifier(INFO_TABLE),
+#                 sql.Identifier(EMAIL_COLUMN),
+#                 sql.Identifier(FIRST_NAME_COLUMN),
+#                 sql.Identifier(LAST_NAME_COLUMN),
+#                 sql.Identifier(DATE_OF_BIRTH_COLUMN)
+#             ), (email, firstname, lastname, "1/2/2023"))
 
-            # Commit the transaction
-            conn.commit()
+#             # Commit the transaction
+#             conn.commit()
 
-            # Close the cursor
-            cur.close()
-            print ("Successfully added to database")
-            return jsonify({"message": "Success!"})
-        except IntegrityError as e:
+#             # Close the cursor
+#             cur.close()
+#             print ("Successfully added to database")
+#             return jsonify({"message": "Success!"})
+#         except IntegrityError as e:
             
-            conn.rollback()
-            print("Error: Email already exists in database.")
-            return jsonify({"message": "Error: Email already exists in database."})
-        finally:
-            # Put the connection back to the pool
-            db_pool.putconn(conn)
-    else:
-        print("No message received")
+#             conn.rollback()
+#             print("Error: Email already exists in database.")
+#             return jsonify({"message": "Error: Email already exists in database."})
+#         finally:
+#             # Put the connection back to the pool
+#             db_pool.putconn(conn)
+#     else:
+#         print("No message received")
 
 CORS(app)
 
