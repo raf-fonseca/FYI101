@@ -36,12 +36,16 @@ const Hero = () => {
       <div
         className={`flex-1 flex ${styles.flexCenter} md:my-0 my-10 relative`}
       >
-        <img
-          src={getStarted}
-          alt="Get started"
-          style={{ transform: "translate(-30%, -30%)" }}
+        <a
+          href="#waitList"
           className="w-[20%] h-[20%] z-[6] cursor-pointer absolute"
-        />
+        >
+          <img
+            src={getStarted}
+            alt="Get started"
+            style={{ transform: "translate(-30%, -30%)" }}
+          />
+        </a>
         <img
           src={robot}
           alt="billing"
