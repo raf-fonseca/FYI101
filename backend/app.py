@@ -25,30 +25,30 @@ DATE_OF_BIRTH_COLUMN = "date_of_birth"
 
 app = Flask(__name__, static_folder='../dist')
 
-def getPassword():
-    DATABASE_PASSWORD_ENV_VAR = "DATABASE_PASSWORD"
+# def getPassword():
+#     DATABASE_PASSWORD_ENV_VAR = "DATABASE_PASSWORD"
     
-    # Check if exists in environment variables and returns if it does
-    if (DATABASE_PASSWORD_ENV_VAR in os.environ):
-        return os.environ[DATABASE_PASSWORD_ENV_VAR]
-    # Set an environment variable if it doesn't exist
-    input_password = getpass.getpass("Enter " + DATABASE_USER + " user's password: ")
-    try:
-        conn = psycopg2.connect(
-            dbname=DATABASE_NAME,  # Connect to the default database
-            user=DATABASE_USER,
-            password=input_password,
-            host=HOST
-        )
-    except psycopg2.OperationalError as e:
-        print("Invalid password.")
-        return getPassword()
+#     # Check if exists in environment variables and returns if it does
+#     if (DATABASE_PASSWORD_ENV_VAR in os.environ):
+#         return os.environ[DATABASE_PASSWORD_ENV_VAR]
+#     # Set an environment variable if it doesn't exist
+#     input_password = getpass.getpass("Enter " + DATABASE_USER + " user's password: ")
+#     try:
+#         conn = psycopg2.connect(
+#             dbname=DATABASE_NAME,  # Connect to the default database
+#             user=DATABASE_USER,
+#             password=input_password,
+#             host=HOST
+#         )
+#     except psycopg2.OperationalError as e:
+#         print("Invalid password.")
+#         return getPassword()
     
-    os.environ[DATABASE_PASSWORD_ENV_VAR] = input_password
-    return os.environ[DATABASE_PASSWORD_ENV_VAR]
+#     os.environ[DATABASE_PASSWORD_ENV_VAR] = input_password
+#     return os.environ[DATABASE_PASSWORD_ENV_VAR]
 
-# Create a connection pool to the database so that we don't have to open and close a connection every time we need to interact with the database
-db_pool = None
+# # Create a connection pool to the database so that we don't have to open and close a connection every time we need to interact with the database
+# db_pool = None
 
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
@@ -105,13 +105,13 @@ def get_data():
 
 CORS(app)
 
-def initDbPool():
-    global db_pool
-    db_pool = psycopg2.pool.SimpleConnectionPool(
-        minconn=1,
-        maxconn=10,
-        dbname=DATABASE_NAME,
-        user=DATABASE_USER,
-        password=getPassword(),
-        host=HOST
-    )
+# def initDbPool():
+#     global db_pool
+#     db_pool = psycopg2.pool.SimpleConnectionPool(
+#         minconn=1,
+#         maxconn=10,
+#         dbname=DATABASE_NAME,
+#         user=DATABASE_USER,
+#         password=getPassword(),
+#         host=HOST
+#     )
