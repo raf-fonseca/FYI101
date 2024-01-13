@@ -1,46 +1,66 @@
 import styles, { layout } from "../style";
+import React, { useState } from "react";
 import Send from "./Send";
 
-const WaitList = () => (
-  <section id="waitList" className={layout.section}>
-    <div className={layout.sectionInfo}>
-      <h2 className={styles.heading2}>
-        Sign Up For
-        <br className="sm:block hidden mt-5" />
-        The Wait List
-      </h2>
-      <p className={`${styles.paragraph} max-w-[470px] mt-5 mb-10 `}>
-        Those who sign up before we launch get unlimited access to our services!
-      </p>
-    </div>
+function WaitList() {
+  /**
+   * Represents the email state and its setter function.
+   * @type {[string, Function]}
+   */
+  const [email, setEmail] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
 
-    {/* Wait List Signup */}
-    <div
-      className={`${layout.flexCenter} flex-col sm:flex-row sm:space-x-2 space-y-2 sm:space-y-0`}
-    >
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    const response = await fetch("https://your-api-url.com", {
+      // replace with your actual API URL
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email, firstName, lastName }),
+    });
+
+    if (response.ok) {
+      console.log("Success:", await response.json());
+    } else {
+      console.log("Error:", response.status);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className={`${layout.flexCenter} mt-4`}>
       <input
         className="w-full   h-[50px] rounded-[20px] bg-discount-gradient text-white font-semibold px-4 py-2"
+        type="text"
         placeholder="First Name"
+        value={firstName}
+        onChange={(e) => setFirstName(e.target.value)}
+        required
       />
       <input
         className="w-full  h-[50px] rounded-[20px] bg-discount-gradient text-white font-semibold px-4 py-2"
+        type="text"
         placeholder="Last Name"
+        value={lastName}
+        onChange={(e) => setLastName(e.target.value)}
+        required
       />
       <input
-        className="w-full  h-[50px] rounded-[20px] bg-discount-gradient text-white font-semibold px-4 py-2"
-        placeholder="Email"
+        className="w-full   h-[50px] rounded-[20px] bg-discount-gradient text-white font-semibold px-4 py-2"
         type="email"
+        placeholder="Email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        required
       />
-    </div>
-
-    <div className={`${layout.flexCenter} mt-4`}>
-      <button>
+      <button type="submit">
         <Send />
       </button>
-    </div>
-
-    {/* WaitList */}
-  </section>
-);
+    </form>
+  );
+}
 
 export default WaitList;
