@@ -39,6 +39,6 @@ export const features = [
     icon: plusIcon,
     title: "Health & Wellness",
     content:
-      "AI will using Machine Learning to get to know you and provide resources based on your needs.",
+      "AI will using Machine Learning to get to know you and provide resources based on your needs  .",
   },
 ];
