@@ -6,6 +6,7 @@ from psycopg2 import IntegrityError, sql, pool
 import os
 import getpass
 import logging
+from waitress import serve
 
 HOST = "localhost"
 PORT = "5000"
@@ -115,3 +116,6 @@ CORS(app)
 #         password=getPassword(),
 #         host=HOST
 #     )
+
+if __name__ == '__main__':
+    serve(app, port=PORT)
