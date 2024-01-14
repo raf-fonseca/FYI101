@@ -41,8 +41,8 @@ const WaitList = () => {
     >
       <div className={layout.sectionInfo}>
         <h2 className={styles.heading2}>
-          Sign Up For
-          <br className="sm:block hidden mt-5" />
+          Sign-Up For
+          <br className="sm:block  mt-5" />
           The Wait List
         </h2>
         <p className={`${styles.paragraph} max-w-[470px] mt-5 mb-10 `}>

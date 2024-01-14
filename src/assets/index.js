@@ -15,6 +15,5 @@ export {
   plusIcon,
   calendarIcon,
   robot,
-  arrowUp,
   getStarted,
 };
