@@ -1,6 +1,5 @@
 import styles from "./style";
-
-import { Navbar, Hero, Business, WaitList, Footer } from "./components";
+import { Navbar, Hero, Business, WaitList } from "./components";
 
 const App = () => (
   <div className=" bg-primary w-full overflow-hidden">
@@ -20,7 +19,6 @@ const App = () => (
       <div className={`${styles.boxWidth}`}>
         <Business />
         <WaitList />
-        <Footer />
       </div>
     </div>
   </div>

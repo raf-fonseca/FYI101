@@ -1,8 +1,8 @@
 import styles, { layout } from "../style";
-import React, { useState } from "react";
-import Send from "./Send";
+import React, { useState, useRef } from "react";
+import emailjs from "@emailjs/browser";
 
-function WaitList() {
+const WaitList = () => {
   /**
    * Represents the email state and its setter function.
    * @type {[string, Function]}
@@ -10,29 +10,32 @@ function WaitList() {
   const [email, setEmail] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  const form = useRef();
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+  const sendEmail = (e) => {
+    e.preventDefault();
 
-    const response = await fetch("https://your-api-url.com", {
-      // replace with your actual API URL
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email, firstName, lastName }),
-    });
-
-    if (response.ok) {
-      console.log("Success:", await response.json());
-    } else {
-      console.log("Error:", response.status);
-    }
+    emailjs
+      .sendForm(
+        "service_klt2zn5",
+        "template_yhz3b8m",
+        form.current,
+        "SmSf5Z1KugtkppslB"
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
   };
 
   return (
     <form
-      onSubmit={handleSubmit}
+      ref={form}
+      onSubmit={sendEmail}
       className={`${layout.flexCenter} mt-4`}
       id="waitList"
     >
@@ -48,34 +51,38 @@ function WaitList() {
         </p>
       </div>
       <input
-        className="w-full h-[50px] rounded-[20px] bg-discount-gradient text-white font-semibold px-4 py-2 "
+        className="w-full h-[50px] rounded-[20px] bg-discount-gradient text-white font-semibold px-4 py-2 max-w-[200px] "
         type="text"
         placeholder="First Name"
-        value={firstName}
-        onChange={(e) => setFirstName(e.target.value)}
-        required
+        value={firstName} //allowing for the user to set input
+        onChange={(e) => setFirstName(e.target.value)} //updating input
+        required // make sure everything is filled out
+        name="first_name"
       />
       <input
-        className="w-full h-[50px] rounded-[20px] bg-discount-gradient text-white font-semibold px-4 py-2 mt-4"
+        className="w-full h-[50px] rounded-[20px] bg-discount-gradient text-white font-semibold px-4 py-2 mt-4 max-w-[200px]"
         type="text"
         placeholder="Last Name"
         value={lastName}
         onChange={(e) => setLastName(e.target.value)}
         required
+        name="last_name"
       />
       <input
-        className="w-full h-[50px] rounded-[20px] bg-discount-gradient text-white font-semibold px-4 py-2 mt-4 mb-4"
+        className="w-full h-[50px] rounded-[20px] bg-discount-gradient text-white font-semibold px-4 py-2 mt-4 mb-4 max-w-[400px]"
         type="email"
         placeholder="Email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         required
+        name="email"
       />
-      <button type="submit">
-        <Send />
-      </button>
+      <input
+        type="submit"
+        value="Send"
+        className={`py-2 px-6 bg-blue-gradient font-poppins font-medium text-[18px] text-primary outline-none ${styles} rounded-[20px] cursor-pointer`}
+      />
     </form>
   );
-}
-
+};
 export default WaitList;
