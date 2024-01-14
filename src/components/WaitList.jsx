@@ -25,6 +25,7 @@ const WaitList = () => {
       .then(
         (result) => {
           console.log(result.text);
+          window.location.reload(); // Reload the page
         },
         (error) => {
           console.log(error.text);
