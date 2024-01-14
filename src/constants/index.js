@@ -23,9 +23,9 @@ export const features = [
   {
     id: "feature-1",
     icon: calendarIcon,
-    title: "Events",
+    title: "Scheduling",
     content:
-      "All events happening at TMU will displayed, showing countless opportunities.",
+      "Input your course sylabus and get a personalized schedule with important due dates.",
   },
   {
     id: "feature-2",
@@ -39,6 +39,6 @@ export const features = [
     icon: plusIcon,
     title: "Health & Wellness",
     content:
-      "Receive custom recommendations on how to stay healthy as a student.",
+      "AI will using Machine Learning to get to know you and provide resources based on your needs.",
   },
 ];

@@ -16,7 +16,7 @@ const Navbar = () => {
         <h1 className="font-poppins font-semibold text-white text-[30px]">
           FYI101
         </h1>
-        {/* Navbar Links Regular*/}
+        {/* Normal navLinks */}
       </div>
       <ul className="list-none sm:flex hidden justify-end items-center flex-1 ml-3">
         {navLinks.map((nav, index) => (
@@ -30,7 +30,7 @@ const Navbar = () => {
           </li>
         ))}
       </ul>
-      {/* Hamburger Menu */}
+      {/* Mobile hamburger menu */}
       <div className="sm:hidden flex flex-1 justify-end items-center">
         <img
           src={toggle ? close : menu}
@@ -38,8 +38,8 @@ const Navbar = () => {
           className="w-[28px] h-[28px] object-contain"
           onClick={() => setToggle((prev) => !prev)}
         />
-        {/* Navbar Links Mobile */}
         <div
+          // Mobile navLinks but vertical now
           className={`${
             toggle ? "flex" : "hidden"
           } p-6 bg-black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[140px] rounded-xl sidebar`}
