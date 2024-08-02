@@ -8,7 +8,7 @@ const Hero = () => {
       className={`flex md:flex-row flex-col ${styles.paddingY}`}
     >
       <div
-        className={`flex-1 ${styles.flexStart} flex-col xl:px-0 sm:px-16 px-6`}
+        className={`flex-1 ${styles.flexStart} flex-col xl:px-0 sm:px-32 px-6`}
       >
         {/* Main Title */}
         <div className="flex flex-row justify-between items-center w-full">
